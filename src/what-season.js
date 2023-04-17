@@ -15,22 +15,26 @@ function getSeason(date) {
   if(!date){
     throw new Error('Unable to determine the time of year!');
   }
+/*
+  if(!date.getTime){
+    throw new Error('Invalid date!');
+  }
 
   let today = new Date();
   let now = today.toLocaleString();
   if(date < now){
     throw new Error('Invalid date!');
   }
+*/
+  const i = date.getMonth();
 
-  let i = date.getMonth();
-
-  if(0 <= i <= 1 || i === 11) {
+  if(i === 0 || i === 1 || i === 11) {
     return 'winter';
-  } else if(2 <= i <= 4){
+  } else if(i === 2 || i === 3 || i === 4){
     return 'spring';
-  } else if(5 <= i <= 7) {
+  } else if(i === 5 || i === 6 || i === 7) {
     return 'summer';
-  } else {
+  } else if(i === 8 || i === 9 || i === 10){
     return 'autumn';
   }
 
